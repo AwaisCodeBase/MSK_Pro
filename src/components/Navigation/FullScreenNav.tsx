@@ -140,7 +140,7 @@ const FullScreenNav = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link href='/' onClick={handleNavClick} className='link opacity-0 origin-top relative border-t-1 border-white block cursor-pointer' style={{ transform: 'rotateX(90deg)' }}>
+                    <Link href='/contact' onClick={handleNavClick} className='link opacity-0 origin-top relative border-t-1 border-white block cursor-pointer' style={{ transform: 'rotateX(90deg)' }}>
                         <h1 className='font-[font2] text-3xl sm:text-4xl md:text-5xl lg:text-[8vw] xl:text-[7vw] text-center lg:leading-[0.8] sm:leading-[0.9] leading-[1] xl:pt-12 lg:pt-10 sm:pt-6 pt-4 uppercase'>Contact</h1>
                         <div className='moveLink absolute text-black flex top-0 bg-[#0095CD] w-full h-full overflow-hidden'>
                             <div className='moveX flex items-center'>
