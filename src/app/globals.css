@@ -14,9 +14,10 @@
 
 .moveX{
     animation-name: moveAnimation;
-    animation-duration: 10s;
+    animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    animation-play-state: paused;
 }
 
 .moveLink{
@@ -28,31 +29,61 @@
     opacity: 1;
 }
 
+/* Start animation only on hover for all breakpoints */
+.link:hover .moveX {
+    animation-play-state: running;
+}
+
+/* Support touch devices: activate on press */
+.link:active .moveLink,
+.moveLink:active {
+    opacity: 1;
+    background: #ffffff !important;
+}
+
+.link:active .moveX,
+.moveLink:active .moveX {
+    animation-play-state: running;
+}
+
+/* Also allow hovering directly over the overlay */
+.moveLink:hover {
+    opacity: 1;
+    background: #ffffff;
+}
+.moveLink:hover .moveX {
+    animation-play-state: running;
+}
+
+/* Ensure the moving overlay is visible on small screens (no hover) */
+/* No mobile override: keep overlay hidden until hover/tap */
+
 @keyframes moveAnimation {
     from{
         transform: translateX(0);
     }
     to{
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 
 /* Responsive improvements */
 @media (max-width: 640px) {
     .moveX {
-        animation-duration: 8s;
+        animation-duration: 2.5s;
     }
 }
 
 @media (max-width: 480px) {
     .moveX {
-        animation-duration: 6s;
+        animation-duration: 2s;
     }
 }
 
 /* Ensure smooth scrolling on mobile */
 html {
     scroll-behavior: smooth;
+    overflow-y: auto;
 }
 
 /* Improve touch targets on mobile */
