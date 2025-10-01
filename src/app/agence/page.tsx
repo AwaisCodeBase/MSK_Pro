@@ -3,20 +3,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ClipDiv } from '@/components/ui/skiper-ui/skiper66'
 import { TextScroll } from '@/components/ui/skiper-ui/text-scroll'
-import { StickyCard002 } from '@/components/ui/skiper-ui/skiper17'
 
 
-const cards = [
-  { id: 1, image: "/img1.png", alt: "Image 1" },
-  { id: 2, image: "/gorilla2.png", alt: "Image 2" },
-  { id: 3, image: "/img3.jpg", alt: "Image 1" },
-  { id: 4, image: "/img4.jpg", alt: "Image 2" },
-  { id: 5, image: "/img5.png", alt: "Image 1" },
-  { id: 6, image: "/img6.png", alt: "Image 2" },
-  { id: 7, image: "/img7.jpg", alt: "Image 1" },
-  { id: 8, image: "/img8.jpg", alt: "Image 2" },
-  { id: 9, image: "/img9.png", alt: "Image 2" },
-];
+
 
 const Agence = () => {
   const heroRef = useRef<HTMLDivElement | null>(null)
@@ -212,9 +201,7 @@ const Agence = () => {
 
       <TextScroll text='MSK EDITORS' default_velocity={4} className='text-bold-500 text-white text-6xl '  > </TextScroll>
 
-      <div ref={stickyCardsRef} data-theme="dark" className="h-screen w-full">
-        <StickyCard002 cards={cards} />
-      </div>
+ 
     </div>
   )
 }
