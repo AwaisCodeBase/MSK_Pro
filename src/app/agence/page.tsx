@@ -3,9 +3,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ClipDiv } from '@/components/ui/skiper-ui/skiper66'
 import { TextScroll } from '@/components/ui/skiper-ui/text-scroll'
+import { StickyCard002 } from "@/components/ui/skiper-ui/skiper17";
+import ReactLenis from "lenis/react"
 
-
-
+const cards = [
+  { id: 1, image: "/img4.png", alt: "Image 1" },
+  { id: 2, image: "/img6.png", alt: "Image 2" },
+  { id: 3, image: "/img5.png", alt: "Image 3" },
+  { id: 4, image: "/img7.png", alt: "Image 4" },
+  // Add more cards as needed
+];
 
 const Agence = () => {
   const heroRef = useRef<HTMLDivElement | null>(null)
@@ -13,6 +20,7 @@ const Agence = () => {
   const integratedRef = useRef<HTMLElement | null>(null)
   const servicesRef = useRef<HTMLElement | null>(null)
   const stickyCardsRef = useRef<HTMLDivElement | null>(null)
+  const nextSectionRef = useRef<HTMLElement | null>(null)
 
   const [pageDark, setPageDark] = useState(false)
 
@@ -23,6 +31,7 @@ const Agence = () => {
       { el: integratedRef.current, theme: 'light' },
       { el: servicesRef.current, theme: 'dark' },
       { el: stickyCardsRef.current, theme: 'dark' },
+      { el: nextSectionRef.current, theme: 'light' },
     ]
 
     const io = new IntersectionObserver(
@@ -80,7 +89,7 @@ const Agence = () => {
   return (
     <div className="relative w-full">
       {/* Page background layer that transitions color */}
-      <div 
+      <div
         className="fixed inset-0 -z-10 transition-colors duration-700 ease-in-out"
         style={{ backgroundColor: pageDark ? '#000000' : '#FFFFFF' }}
       />
@@ -97,7 +106,7 @@ const Agence = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 py-10 sm:py-12 md:py-16 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-start">
             <div className="lg:col-span-6">
-              <h2 
+              <h2
                 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight transition-colors duration-700 ease-in-out"
                 style={{ fontFamily: 'font2', color: pageDark ? '#FFFFEB' : '#000000' }}
               >
@@ -105,14 +114,14 @@ const Agence = () => {
               </h2>
             </div>
             <div className="lg:col-span-6 space-y-4 sm:space-y-5">
-              <p 
+              <p
                 className="text-base sm:text-lg md:text-xl leading-relaxed md:leading-[1.7] transition-colors duration-700 ease-in-out"
                 style={{ color: pageDark ? 'rgba(255, 255, 235, 0.9)' : 'rgba(0, 0, 0, 0.9)' }}
               >
                 The internet is our wild west — chaotic, limitless, and ours to explore. It's where we learned to create,
                 experiment, and carve out space for ideas that actually matter.
               </p>
-              <p 
+              <p
                 className="text-sm sm:text-base md:text-lg leading-relaxed md:leading-[1.7] transition-colors duration-700 ease-in-out"
                 style={{ color: pageDark ? 'rgba(255, 255, 235, 0.8)' : 'rgba(0, 0, 0, 0.8)' }}
               >
@@ -128,7 +137,7 @@ const Agence = () => {
       <section ref={integratedRef} data-theme="light" className="w-full">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-12 sm:py-16 md:py-20">
           <div className="max-w-5xl">
-            <h2 
+            <h2
               className="uppercase font-medium tracking-tight text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] transition-colors duration-700 ease-in-out"
               style={{ fontFamily: 'font2', color: pageDark ? '#FFFFEB' : '#000000' }}
             >
@@ -146,11 +155,11 @@ const Agence = () => {
       <section
         ref={servicesRef}
         data-theme="dark"
-        className="w-full min-h-screen"
+        className="w-full"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
-          <div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 transition-colors duration-700 ease-in-out"
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-2 sm:pb-3 md:pb-4">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 transition-colors duration-700 ease-in-out"
             style={{ color: pageDark ? '#FFFFEB' : '#000000' }}
           >
             {/* 01 Branding */}
@@ -196,16 +205,33 @@ const Agence = () => {
             </div>
           </div>
         </div>
-        
+
+
       </section>
 
-      <TextScroll text='MSK EDITORS' default_velocity={4} className='text-bold-500 text-white text-6xl '  > </TextScroll>
+      <TextScroll text='MSK EDITORS' default_velocity={4} className='text-bold-500 text-white text-6xl' containerClassName='py-8 my-4'  > </TextScroll>
 
- 
+
+        <div ref={stickyCardsRef} data-theme="dark" className="h-screen w-full bg-black">
+          <StickyCard002 cards={cards} />
+        </div>
+
+       {/* Next section to trigger light theme after sticky cards */}
+       <section ref={nextSectionRef} data-theme="light" className="w-full min-h-screen" style={{ backgroundColor: '#FFFFEB' }}>
+         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20">
+           <div className="text-center">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight" style={{ fontFamily: 'font2', color: '#000000' }}>
+               Next Section
+             </h2>
+             <p className="mt-4 text-lg text-gray-600">
+               This section appears after the sticky cards animation completes
+             </p>
+           </div>
+         </div>
+       </section>
+
     </div>
   )
 }
 
 export default Agence
-
-
